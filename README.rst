@@ -76,7 +76,7 @@ and was processed to filter for the following conditions:
 
 The reactions were mapped with `RXNMapper <https://github.com/rxn4chemistry/rxnmapper>`
 
-Refer to the data folder for an explanation of how to process an eample dataset.
+Refer to the data folder for an explanation of how to process an example dataset.
 
 Note: For using Enzyme data the model can be trained following the procedure of `Probst et. al. <https://github.com/rxn4chemistry/biocatalysis-model>` after tagging disconnection sites as shown below.
 
