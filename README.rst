@@ -27,8 +27,6 @@
     :alt: Project generated with PyScaffold
     :target: https://pyscaffold.org/
 
-|
-
 ==================================
 Interactive Retrosynthetic Language Models
 ==================================
