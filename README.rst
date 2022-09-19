@@ -58,18 +58,11 @@ to different chemistry domains, from traditional to enzymatic reactions, in whic
     :height: 400px
     :alt: alternate text
 
-Provided for you
-################
-- Preprocessed USPTO dataset
-- Notebooks to demonstrate data preprocessing
-- Disconnection Aware model
-
-Note: For using Enzyme data the model can be trained following the procedure of `Probst et. al. <https://github.com/rxn4chemistry/biocatalysis-model>` after tagging disconnection sites as shown below.
 
 Dataset
 #######
 
-The data provided is derived from the `US Patent Office extracts (USPTO) by Lowe <https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873>`
+The data used was derived from the `US Patent Office extracts (USPTO) by Lowe <https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873>`
 and was processed to filter for the following conditions:
 
 - min_reactants: 2
@@ -83,7 +76,11 @@ and was processed to filter for the following conditions:
 - max_products_tokens: 200
 - max_absolute_formal_charge: 2
 
-The reactions were mapped with `RXNMapper <https://github.com/rxn4chemistry/rxnmapper>` 
+The reactions were mapped with `RXNMapper <https://github.com/rxn4chemistry/rxnmapper>`
+
+Refer to the data folder for an explanation of how to process an eample dataset.
+
+Note: For using Enzyme data the model can be trained following the procedure of `Probst et. al. <https://github.com/rxn4chemistry/biocatalysis-model>` after tagging disconnection sites as shown below.
 
 Installation and Usage
 ######
