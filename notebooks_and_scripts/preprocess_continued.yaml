@@ -1,0 +1,39 @@
+data:
+  path: <path-to-dataset>
+  name: <dataset-name>
+  proc_dir: <path-to-proc-dir>
+common:
+  sequence:
+    - IMPORT
+    - SPLIT
+    - TOKENIZE
+  fragment_bond: DOT
+  reaction_column_name: tagged_rxn
+rxn_import:
+  input_file: ${data.path}
+  output_csv: ${data.proc_dir}/${data.name}.imported.csv
+  data_format: CSV
+  input_csv_column_name: ${common.reaction_column_name}
+  reaction_column_name: ${common.reaction_column_name}
+  fragment_bond: ${common.fragment_bond}
+  remove_atom_mapping: false
+  column_for_light: null
+  column_for_heat: null
+split:
+  input_file_path: ${data.path}
+  output_directory: ${data.proc_dir}
+  split_ratio: 0.05
+  reaction_column_name: ${common.reaction_column_name}
+  index_column: ${split.reaction_column_name}
+  max_in_valid: null
+  hash_seed: 42
+  shuffle_seed: 42
+tokenize:
+  input_output_pairs:
+    - inp: ${data.proc_dir}/${data.name}.tagged_filtered.train.csv
+      out: ${data.proc_dir}/${data.name}.tagged_filtered.train
+    - inp: ${data.proc_dir}/${data.name}.tagged_filtered.validation.csv
+      out: ${data.proc_dir}/${data.name}.tagged_filtered.validation
+    - inp: ${data.proc_dir}/${data.name}.tagged_filtered.test.csv
+      out: ${data.proc_dir}/${data.name}.tagged_filtered.test
+  reaction_column_name: ${common.reaction_column_name}
