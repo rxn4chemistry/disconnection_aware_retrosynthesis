@@ -1,4 +1,3 @@
-
 name: "Running tests: style, mypy, pytest"
 
 on: [push, pull_request]
@@ -8,22 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     name: Style, mypy, pytest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.7
-    - name: Install Dependencies
-      run: pip install -e .[dev,rdkit]
-    - name: Check black
-      run: python -m black --check --diff --color .
-    - name: Check isort
-      run: python -m isort --check --diff .
-    - name: Check flake8
-      run: python -m flake8 .
-    - name: Check mypy (on the tests)
-      run: python -m mypy tests
-    - name: Check mypy (on package)
-      run: python -m mypy disconnection_aware_retrosynthesis
-    - name: Run pytests
-      run: python -m pytest
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.7
+      - name: Install Dependencies
+        run: pip install -e .[dev,rdkit]
+      - name: Check black
+        run: python -m black --check --diff --color .
+      - name: Check isort
+        run: python -m isort --check --diff .
+      - name: Check flake8
+        run: python -m flake8 .
+      - name: Check mypy (on the tests)
+        run: python -m mypy tests
+      - name: Check mypy (on package)
+        run: python -m mypy dar
+      - name: Run pytests
+        run: python -m pytest
