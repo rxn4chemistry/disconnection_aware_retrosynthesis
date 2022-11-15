@@ -9,7 +9,7 @@ from rxn.chemutils.reaction_smiles import (
 from rxn.utilities.containers import chunker
 from rxnmapper import RXNMapper
 
-from disconnection_aware_retrosynthesis.aam import map_reactions_with_error_handling
+from dar.aam import map_reactions_with_error_handling
 
 
 @click.command()
@@ -19,7 +19,13 @@ from disconnection_aware_retrosynthesis.aam import map_reactions_with_error_hand
     required=True,
     help="Enter the absolute path to the file containing rxns",
 )
-def map_reactions(file: str):
+@click.option(
+    "--reaction_column",
+    type=str,
+    default="rxn",
+    help="Enter the name of the column containing reactions",
+)
+def map_reactions(file: str, reaction_column: str):
     """
     Maps reactions from a file containing unmapped reaction SMILES
 
@@ -30,8 +36,8 @@ def map_reactions(file: str):
         A file with the original unmapped rection, the atom-mapped reaction
     """
     df = pd.read_csv(file)
-    rxns = df["rxn"].to_list()
-    df["rxn"] = [
+    rxns = df[reaction_column].to_list()
+    df[reaction_column] = [
         to_reaction_smiles(parse_any_reaction_smiles(rxn), ReactionFormat.STANDARD)
         for rxn in rxns
     ]
@@ -42,7 +48,7 @@ def map_reactions(file: str):
 
     results = []
     batch_size = 64
-    for chunk in chunker(df["rxn"].to_list(), batch_size):
+    for chunk in chunker(df[reaction_column].to_list(), batch_size):
         results.extend(map_reactions_with_error_handling(rxn_mapper, chunk))
 
     df["mapped_rxn"] = results

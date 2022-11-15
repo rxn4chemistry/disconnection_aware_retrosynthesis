@@ -16,7 +16,7 @@ rxn_import:
   input_csv_column_name: ${common.reaction_column_name}
   reaction_column_name: ${common.reaction_column_name}
   fragment_bond: ${common.fragment_bond}
-  remove_atom_mapping: false
+  remove_atom_mapping: true
   column_for_light: null
   column_for_heat: null
 split:
@@ -25,7 +25,6 @@ split:
   split_ratio: 0.05
   reaction_column_name: ${common.reaction_column_name}
   index_column: ${split.reaction_column_name}
-  max_in_valid: null
   hash_seed: 42
   shuffle_seed: 42
 tokenize:

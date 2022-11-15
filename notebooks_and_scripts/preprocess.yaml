@@ -8,15 +8,15 @@ common:
     - STANDARDIZE
     - PREPROCESS
   fragment_bond: DOT
-  reaction_column_name: mapped_rxn
+  reaction_column_name: ReactionSmiles
 rxn_import:
   input_file: ${data.path}
   output_csv: ${data.proc_dir}/${data.name}.imported.csv
-  data_format: CSV
+  data_format: TSV
   input_csv_column_name: ${common.reaction_column_name}
   reaction_column_name: ${common.reaction_column_name}
   fragment_bond: ${common.fragment_bond}
-  remove_atom_mapping: false
+  remove_atom_mapping: true
   column_for_light: null
   column_for_heat: null
 standardize:

@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from disconnection_aware_retrosynthesis.chem import (
+from dar.chem import (
     AtomEnvironment,
     get_all_atom_indices,
     get_atom_list,
