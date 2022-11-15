@@ -23,6 +23,6 @@ jobs:
       - name: Check mypy (on the tests)
         run: python -m mypy tests
       - name: Check mypy (on package)
-        run: python -m mypy dar
+        run: python -m mypy src/dar
       - name: Run pytests
         run: python -m pytest
