@@ -12,7 +12,7 @@ module = [
     "pandas.*",
     "rdkit.*",
     "rxn_biocatalysis_tools.*",
-    "sphinx.*",
+    "dar.*",
 ]
 ignore_missing_imports = true
 
