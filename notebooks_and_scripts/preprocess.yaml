@@ -1,0 +1,44 @@
+data:
+  path: <path-to-dataset>
+  name: <dataset-name>
+  proc_dir: <path-to-proc-dir>
+common:
+  sequence:
+    - IMPORT
+    - STANDARDIZE
+    - PREPROCESS
+  fragment_bond: DOT
+  reaction_column_name: ReactionSmiles
+rxn_import:
+  input_file: ${data.path}
+  output_csv: ${data.proc_dir}/${data.name}.imported.csv
+  data_format: TSV
+  input_csv_column_name: ${common.reaction_column_name}
+  reaction_column_name: ${common.reaction_column_name}
+  fragment_bond: ${common.fragment_bond}
+  remove_atom_mapping: true
+  column_for_light: null
+  column_for_heat: null
+standardize:
+  input_file_path: ${rxn_import.output_csv}
+  annotation_file_paths: []
+  discard_unannotated_metals: false
+  output_file_path: ${data.proc_dir}/${data.name}.standardized.csv
+  fragment_bond: ${common.fragment_bond}
+  reaction_column_name: ${common.reaction_column_name}
+  remove_stereo_if_not_defined_in_precursors: false
+preprocess:
+  input_file_path: ${standardize.output_file_path}
+  output_file_path: ${data.proc_dir}/${data.name}.processed.csv
+  min_reactants: 2
+  max_reactants: 10
+  max_reactants_tokens: 300
+  min_agents: 0
+  max_agents: 0
+  max_agents_tokens: 0
+  min_products: 1
+  max_products: 1
+  max_products_tokens: 200
+  max_absolute_formal_charge: 2
+  fragment_bond: ${common.fragment_bond}
+  reaction_column_name: ${common.reaction_column_name}

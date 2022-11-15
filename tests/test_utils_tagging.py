@@ -1,8 +1,4 @@
-from disconnection_aware_retrosynthesis.tagging import (
-    find_number_tags,
-    get_tagged_products,
-    return_tag_combinations,
-)
+from dar.tagging import find_number_tags, get_tagged_products, return_tag_combinations
 
 
 def test_get_tagged_products():

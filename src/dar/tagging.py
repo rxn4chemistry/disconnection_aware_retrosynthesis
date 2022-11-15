@@ -5,7 +5,7 @@ from typing import Dict, List, Tuple
 
 from rdkit import Chem
 
-from disconnection_aware_retrosynthesis.chem import AtomEnvironment, get_atom_list
+from dar.chem import AtomEnvironment, get_atom_list
 
 
 def get_tagged_products(precursor_smiles: str, product_smiles: str) -> str:
